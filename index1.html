@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="hello">안녕하세요</h1>
+    <h1 id="gosu">JS 초보에요</h1>
+    <script>
+        document.getElementById('hello').innerHTML = '안녕';
+        // html document(문서)의 id('hello')인 element(요소)를 get(가져와)해서 
+        // innerHTML(안녕하세요)에 '안녕'을 넣어주세요.
+        // document.getElementById('??').?? = '??';
+        // getElementByID를 셀렉터라고 부름
+        document.getElementById('gosu').innerHTML = 'JS 고수에요'
+        document.getElementById('hello').style.fontSize = '16px';
+    </script>
+</body>
+
+</html>
