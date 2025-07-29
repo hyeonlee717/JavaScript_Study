@@ -20,9 +20,10 @@
         document.getElementById('gosu').innerHTML = 'JS 고수에요'
         document.getElementById('hello').style.fontSize = '16px';
     </script>
+
     <div class="alert-box" id="alert">
         <p id="alertText"></p>
-        <button onclick="alertDisplay('alert', 'none' )">닫기</button>
+        <button id="close">닫기</button>
     </div>
     <button onclick="alertDisplay('alert', 'block'), alertText('alertText', '아이디를 입력해주세요.')">버튼1</button>
     <button onclick="alertDisplay('alert', 'block'), alertText('alertText', '비밀번호를 입력해주세요.')">버튼2</button>
@@ -39,6 +40,16 @@
         function alertText(id, text) {
             document.getElementById(id).innerText = text;
         }
+        // getElementByClassName('classname').[indexNumber]도 쓰임
+        // id랑은 다르게 class 이름은 여러 요소에 중복 가능하므로 몇번째 요소를 대상으로 하는지 명시해 줘야함
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementById('alert').style.display = 'none';
+        });
+        // button 태그에 onclick 사용하지 않고도 addEventListener사용하여 클릭시 수행할 기능 설정 가능
+        // event는 웹 페이지에서 사용자가 조작하는 클릭, 키입력, 스크롤, 드래그 등을 가리킴
+        // addEventListener은 일종의 감시자 역할
+        // addEventListener의 parameter자리에 들어가는 function을 call back 함수라고 부름
+        // html에서 close라는 id의 요소를 찾아서 click했을때, alert라는 id의 style의 display 속성을 none으로 부여하는 함수를 실행
     </script>
 </body>
 
