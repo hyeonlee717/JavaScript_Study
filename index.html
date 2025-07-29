@@ -21,16 +21,23 @@
         document.getElementById('hello').style.fontSize = '16px';
     </script>
     <div class="alert-box" id="alert">
-        <p>알림창임</p>
-        <button onclick="alertClose()">닫기</button>
+        <p id="alertText"></p>
+        <button onclick="alertDisplay('alert', 'none' )">닫기</button>
     </div>
-    <button onclick="alertOpen()">버튼</button>
+    <button onclick="alertDisplay('alert', 'block'), alertText('alertText', '아이디를 입력해주세요.')">버튼1</button>
+    <button onclick="alertDisplay('alert', 'block'), alertText('alertText', '비밀번호를 입력해주세요.')">버튼2</button>
     <script>
-        function alertOpen() {
-            document.getElementById('alert').style.display = 'block';
+        // function alertOpen() {
+        //     document.getElementById('alert').style.display = 'block';
+        // }
+        // function alertClose() {
+        //     document.getElementById('alert').style.display = 'none';
+        // }
+        function alertDisplay(id, displayValue) {
+            document.getElementById(id).style.display = displayValue;
         }
-        function alertClose() {
-            document.getElementById('alert').style.display = 'none';
+        function alertText(id, text) {
+            document.getElementById(id).innerText = text;
         }
     </script>
 </body>
