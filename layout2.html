@@ -51,7 +51,7 @@
                 alert('비밀번호를 6자 이상 입력하세요.');
             }
         })
-        $('#id').on('input', function(){
+        $('#id').on('input', function () {
             console.log('입력');
         })
         // if () {
@@ -61,7 +61,7 @@
         // } else if () {
 
         // } else {
-        
+
         // }
         // document.getElementById('send').addEventListener('click', function (e) {
         //     const idValue = document.getElementById('identification').value.trim();
@@ -73,6 +73,71 @@
         // if(조건){실행할 코드}
         // 전송버튼 눌렀을 때
         // 저기 input에 입력한 값이 공백이면 알림창 띄워주세요
+        // 369게임 숙제
+        function game(a) {
+            if (a % 3 == 0) {
+                console.log('박수')
+            } else {
+                console.log('통과')
+            }
+        }
+        game(6)
+        game(11)
+        game(12)
+        function game2(a) {
+            if (a % 9 == 0) {
+                console.log('박수박수')
+            } else if (a % 3 == 0) {
+                console.log('박수')
+            } else {
+                console.log('통과')
+            }
+        }
+        game2(3)
+        game2(6)
+        game2(9)
+        game2(11)
+        function game3(a, b) {
+            if (a < 40 || b < 40) {
+                console.log('불합격')
+            } else if (a + b < 120) {
+                console.log('불합격')
+            } else {
+                console.log('합격')
+            }
+        }
+        game3(70, 70)
+        game3(30, 100)
+        game3(50, 50)
+        function game4(a) {
+            a = a % 10
+            if (a == 3 || a == 6 || a == 9) {
+                console.log('박수')
+            } else {
+                console.log('통과')
+            }
+        }
+        game4(3)
+        game4(6)
+        game4(9)
+        game4(12)
+        game4(13)
+        function game5(a, b) {
+            if (a < 0 || a > 100 || b < 0 || b > 100) {
+                console.log('장난치지 마세요')
+            } else if (a + b < 120) {
+                console.log('불합격')
+            } else if (a < 40 || b < 40) {
+                console.log('불합격')
+            } else {
+                console.log('합격')
+            }
+        }
+        game5(0, 90)
+        game5(-10, 90)
+        game5(30, 95)
+        game5(80, 900)
+        game5(50, 50)
     </script>
 </body>
 
