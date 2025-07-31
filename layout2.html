@@ -18,10 +18,10 @@
             <h4>로그인하세요</h4>
             <form action="sucsess.html">
                 <div class="my-3">
-                    <input type="text" class="form-control" id="identification">
+                    <input type="text" class="form-control" id="id">
                 </div>
                 <div class="my-3">
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="pw">
                 </div>
                 <button type="submit" class="btn btn-primary" id="send">전송</button>
                 <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -39,11 +39,27 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        $('#send').on('click', function () {
-            if ($('#identification').val().trim() == '') {
-                alert('아이디를 입력해 주세요.');
+        $('#send').on('click', function (e) {
+            if ($('#id').val().trim() == '' || $('#pw').val().trim() == '') {
+                e.preventDefault();
+                alert('아이디 또는 비밀번호를 입력해 주세요.');
             }
         })
+        $('#send').on('click', function (e) {
+            if ($('#pw').val().length < 6) {
+                e.preventDefault();
+                alert('비밀번호를 6자 이상 입력하세요.');
+            }
+        })
+        // if () {
+
+        // } else if () {
+
+        // } else if () {
+
+        // } else {
+        
+        // }
         // document.getElementById('send').addEventListener('click', function (e) {
         //     const idValue = document.getElementById('identification').value.trim();
         //     if (idValue === '') {
