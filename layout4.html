@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Q1. 변수 만들어보기
+        let age = 20;
+        const country = 'korea';
+
+        // Q2. 
+        // var name = 'park';
+        // var id = 0;
+
+        // function showName(){
+        //   var name = 'kim';
+        //   var id = 1;
+        //   console.log(name);
+        // }
+
+        // showName();
+        // console.log(id);
+
+        // 'kim'
+        //0
+
+        // Q3. 이자율 계산하기
+        var 예금액 = 10000;
+        var 미래예금액 = 0;
+        function 예금액계산기(n) {
+            if (예금액 >= 0 && 예금액 < 50000) {
+                미래예금액 = 예금액 * ((1.15) ** n);
+            } else if (예금액 > 50000) {
+                미래예금액 = 예금액 * ((1.2) ** n);
+            } else {
+                console.log('예금액이 0보다 작습니다.')
+            }
+        }
+        예금액계산기(2);
+        console.log(미래예금액);
+
+        // Q4. 커피 리필
+        var first = 360;
+        var sum = 0;
+        function 최대커피합() {
+            sum = first + first * 2 / 3 + first * 2 / 3 * 2 / 3
+        }
+        최대커피합();
+        console.log(sum);
+    </script>
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button type="submit" id="send-answer">제출</button>
+
+    <script>
+
+        let trial = 0;
+        document.getElementById('send-answer').addEventListener('click', function () {
+            let inputValue = document.getElementById('answer').value;
+            if (inputValue == 1335) {
+                alert('성공');
+            } else {
+                trial = trial + 1;
+                if (trial == 3) {
+                    alert('멍청아')
+                }
+            }
+            console.log(trial);
+        })
+    </script>
+</body>
+
+</tml>
