@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="layout2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- 모달창 -->
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <form action="sucsess.html" id="login-form">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control" id="pw">
+                </div>
+                <button type="submit" class="btn btn-primary" id="send">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 메인창 -->
+    <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button class="btn btn-danger"></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('#login-form').on('submit', function (e) {
+
+            const emailValue = $('#email').val();
+            const passwordValue = $('#pw').val();
+
+            if (emailValue.trim() == '') {
+                e.preventDefault();
+                alert('이메일을 입력해주세요.');
+            } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue)) {
+                e.preventDefault();
+                alert('틀린 이메일 양식입니다.');
+            } else if (passwordValue.trim() == '') {
+                e.preventDefault();
+                alert('비밀번호를 입력해주세요.');
+            } else if (passwordValue.length < 6) {
+                e.preventDefault();
+                alert('비밀번호는 6자리 이상 입력해야 합니다.')
+            } else if (!/(?=.*[A-Z])/.test(passwordValue)) {
+                e.preventDefault();
+                alert('비밀번호는 대문자를 적어도 1개이상 포함해야 합니다.');
+            } else {
+                alert('로그인 성공! 환영합니다.')
+            }
+        })
+    </script>
+</body>
+
+</html>
