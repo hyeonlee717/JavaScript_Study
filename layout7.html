@@ -24,6 +24,7 @@
             </div>
         </div>
     </div>
+    <button class="slide-previous">이전</button>
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
@@ -34,18 +35,44 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
+
+            let imgIndex = 1;
+            let n;
             $('.slide-1').on('click', function () {
+                imgIndex = 1;
                 $('.slide-container').css('transform', 'translateX(0)');
             })
+
             $('.slide-2').on('click', function () {
+                imgIndex = 2;
                 $('.slide-container').css('transform', 'translateX(-200px)');
             })
+
             $('.slide-3').on('click', function () {
+                imgIndex = 3;
                 $('.slide-container').css('transform', 'translateX(-400px)');
             })
+
             $('.slide-next').on('click', function () {
-                $('.slide-container').css('transform', 'translateX(-200px)');
+                if (imgIndex == 1) {
+                    imgIndex++;
+                    $('.slide-container').css('transform', 'translateX(-200px)');
+                } else if (imgIndex == 2) {
+                    imgIndex++;
+                    $('.slide-container').css('transform', 'translateX(-400px)');
+                }
             })
+
+            $('.slide-previous').on('click', function () {
+                if (imgIndex == 2) {
+                    imgIndex--;
+                    $('.slide-container').css('transform', 'translateX(0px)');
+                } else if (imgIndex == 3) {
+                    imgIndex--;
+                    $('.slide-container').css('transform', 'translateX(-200px)');
+                }
+            })
+
         </script>
 </body>
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function 함수(a) {
+            return 1 + a
+            // return은 퉤 뱉는 것
+            // 함수 종료로도 사용됨
+        }
+        function vat(a) {
+            return a * 0.1
+        }
+        vat(50000)
+        // 5000이 남음
+        console.log(vat(60000))
+        function vat2(a) {
+            var num = (a * 1.1).toFixed(1);
+            // toFixed()는 소수점 몇째 자리까지 반올림할건지
+            // 근데 문자열로 변환됨 그래서 다시 숫자로 변환해야함
+            return parseFloat(num)
+            // parseFloat이나 parseInt로 다시 숫자열로 바꿔야함
+        }
+    </script>
+</body>
+
+</html>
