@@ -35,43 +35,32 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
+            let currentSlide = 1;
+            const totalSlides = 3;
 
-            let imgIndex = 1;
-            let n;
-            $('.slide-1').on('click', function () {
-                imgIndex = 1;
-                $('.slide-container').css('transform', 'translateX(0)');
-            })
+            function moveSlide(index) {
+                // 유효한 슬라이드 인덱스인지 확인
+                if (index < 1 || index > totalSlides) return;
 
-            $('.slide-2').on('click', function () {
-                imgIndex = 2;
-                $('.slide-container').css('transform', 'translateX(-200px)');
-            })
+                const moveAmount = -(index - 1) * 200; // 슬라이드 너비가 200px이라고 가정
+                $('.slide-container').css('transform', `translateX(${moveAmount}px)`);
+                currentSlide = index;
+            }
 
-            $('.slide-3').on('click', function () {
-                imgIndex = 3;
-                $('.slide-container').css('transform', 'translateX(-400px)');
-            })
+            // 숫자 버튼 클릭 이벤트
+            $('.slide-1').on('click', () => moveSlide(1));
+            $('.slide-2').on('click', () => moveSlide(2));
+            $('.slide-3').on('click', () => moveSlide(3));
 
+            // 다음 버튼 클릭 이벤트
             $('.slide-next').on('click', function () {
-                if (imgIndex == 1) {
-                    imgIndex++;
-                    $('.slide-container').css('transform', 'translateX(-200px)');
-                } else if (imgIndex == 2) {
-                    imgIndex++;
-                    $('.slide-container').css('transform', 'translateX(-400px)');
-                }
-            })
+                moveSlide(currentSlide + 1);
+            });
 
+            // 이전 버튼 클릭 이벤트
             $('.slide-previous').on('click', function () {
-                if (imgIndex == 2) {
-                    imgIndex--;
-                    $('.slide-container').css('transform', 'translateX(0px)');
-                } else if (imgIndex == 3) {
-                    imgIndex--;
-                    $('.slide-container').css('transform', 'translateX(-200px)');
-                }
-            })
+                moveSlide(currentSlide - 1);
+            });
 
         </script>
 </body>
