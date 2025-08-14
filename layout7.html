@@ -35,30 +35,44 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
-            let currentSlide = 1;
-            const totalSlides = 3;
 
-            function moveToSlide(index) {
-                // 슬라이드 번호가 1보다 작거나 마지막 슬라이드보다 크면 함수 종료
-                if (index < 1 || index > totalSlides) {
-                    return;
+            let imgIndex = 1;
+            let n;
+            $('.slide-1').on('click', function () {
+                imgIndex = 1;
+                $('.slide-container').css('transform', 'translateX(0)');
+            })
+
+            $('.slide-2').on('click', function () {
+                imgIndex = 2;
+                $('.slide-container').css('transform', 'translateX(-200px)');
+            })
+
+            $('.slide-3').on('click', function () {
+                imgIndex = 3;
+                $('.slide-container').css('transform', 'translateX(-400px)');
+            })
+
+            $('.slide-next').on('click', function () {
+                if (imgIndex == 1) {
+                    imgIndex++;
+                    $('.slide-container').css('transform', 'translateX(-200px)');
+                } else if (imgIndex == 2) {
+                    imgIndex++;
+                    $('.slide-container').css('transform', 'translateX(-400px)');
                 }
-                const moveX = -(index - 1) * 200;
-                $('.slide-container').css('transform', `translateX(${moveX}px)`);
-                currentSlide = index;
-            }
+            })
 
-            $('.slide-1').on('click', () => moveToSlide(1));
-            $('.slide-2').on('click', () => moveToSlide(2));
-            $('.slide-3').on('click', () => moveToSlide(3));
+            $('.slide-previous').on('click', function () {
+                if (imgIndex == 2) {
+                    imgIndex--;
+                    $('.slide-container').css('transform', 'translateX(0px)');
+                } else if (imgIndex == 3) {
+                    imgIndex--;
+                    $('.slide-container').css('transform', 'translateX(-200px)');
+                }
+            })
 
-            $('.slide-next').on('click', () => {
-                moveToSlide(currentSlide + 1);
-            });
-
-            $('.slide-previous').on('click', () => {
-                moveToSlide(currentSlide - 1);
-            });
         </script>
 </body>
 
