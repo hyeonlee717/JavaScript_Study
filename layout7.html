@@ -38,30 +38,27 @@
             let currentSlide = 1;
             const totalSlides = 3;
 
-            function moveSlide(index) {
-                // 유효한 슬라이드 인덱스인지 확인
-                if (index < 1 || index > totalSlides) return;
-
-                const moveAmount = -(index - 1) * 200; // 슬라이드 너비가 200px이라고 가정
-                $('.slide-container').css('transform', `translateX(${moveAmount}px)`);
+            function moveToSlide(index) {
+                // 슬라이드 번호가 1보다 작거나 마지막 슬라이드보다 크면 함수 종료
+                if (index < 1 || index > totalSlides) {
+                    return;
+                }
+                const moveX = -(index - 1) * 200;
+                $('.slide-container').css('transform', `translateX(${moveX}px)`);
                 currentSlide = index;
             }
 
-            // 숫자 버튼 클릭 이벤트
-            $('.slide-1').on('click', () => moveSlide(1));
-            $('.slide-2').on('click', () => moveSlide(2));
-            $('.slide-3').on('click', () => moveSlide(3));
+            $('.slide-1').on('click', () => moveToSlide(1));
+            $('.slide-2').on('click', () => moveToSlide(2));
+            $('.slide-3').on('click', () => moveToSlide(3));
 
-            // 다음 버튼 클릭 이벤트
-            $('.slide-next').on('click', function () {
-                moveSlide(currentSlide + 1);
+            $('.slide-next').on('click', () => {
+                moveToSlide(currentSlide + 1);
             });
 
-            // 이전 버튼 클릭 이벤트
-            $('.slide-previous').on('click', function () {
-                moveSlide(currentSlide - 1);
+            $('.slide-previous').on('click', () => {
+                moveToSlide(currentSlide - 1);
             });
-
         </script>
 </body>
 
