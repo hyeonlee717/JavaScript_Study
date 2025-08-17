@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 이벤트 기능</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="layout9.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">JSShop</span>
+            <span class="ms-auto mx-3 badge bg-dark">Dark 🔄</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio magnam tenetur nisi, quia officiis vel.
+        Mollitia veniam nihil eligendi placeat nam expedita architecto laudantium aperiam. Nesciunt voluptatibus id
+        repudiandae?
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $('.lorem').on('scroll', function () {
+            // 전체내용높이 = 스크롤한높이 + 박스높이
+            var 전체내용높이 = document.querySelector('.lorem').scrollHeight;
+            var 스크롤한높이 = document.querySelector('.lorem').scrollTop;
+            var 박스높이 = document.querySelector('.lorem').clientHeight;
+            console.log(스크롤한높이, 전체내용높이);
+            if (스크롤한높이 >= 139) {
+                alert('동의');
+            }
+        });
+        // window.addEventListener('scroll', function () {
+        //     console.log(window.scrollY);
+        // })
+        // window.scrollY; y축 방향으로 얼마나 스크롤 되었는지
+        // window.scrollTo(x, y); 강제로 해당 좌표로 스크롤 근데 이거 부트스트랩 사용하면 스무스하게 이동함
+        // 스무스하게 이동하는게 싫으면 css파일에서 :root{scroll-behavior: auto;}라고 제일 위에 작성하면 됨
+        // window.scrollBy(x,y); 현재 위치에서 해당 좌표만큼 이동시켜 주세요
+        // jquery문법 : $(window).on('scroll', function(){}); scrollTop()은 y축으로 얼마이동했는지
+        // ()안에 넣으면 그만큼 이동시켜줌
+        // $(window).on('scroll', function () {
+        //     $(window).scrollTop(100);
+        // })
+
+    </script>
+</body>
+
+</html>
