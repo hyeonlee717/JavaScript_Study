@@ -1,3 +1,17 @@
+.list-group {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s;
+    height: 0px;
+    overflow: hidden;
+}
+
+.slide-up-down {
+    visibility: visible;
+    height: 200px;
+    opacity: 1;
+}
+
 .main-bg {
     padding: 100px 20px;
     background: lightgrey;
@@ -10,10 +24,20 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 5;
     padding: 30px;
+    display: none;
 }
 
 .white-bg {
     background: white;
     border-radius: 5px;
     padding: 30px;
+}
+
+.show-modal {
+    display: block;
+}
+
+.fade-motion {
+    visibility: visible;
+    opacity: 1;
 }
