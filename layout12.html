@@ -25,20 +25,22 @@
         // var carPrice = 50000;
         // var carColor = 'white';
 
-        // array 자료형
+        // array 자료형 대괄호
         var car = ['소나타', 50000, 'white']
         car[1] = 60000; // 순서가 있어서 인덱싱 존재
         console.log(car[1]);
         car.sort(); // 숫자, 영어, 한글 순서대로 알파벳 순 정렬
         console.log(car);
 
-        // object 자료형
+        // object 자료형 중괄호
         var car2 = {
             name: '소나타',
-            price: 50000
+            price: [50000, 40000, 30000] // object안에 array가능
         } // key, value
         console.log(car2.name); // or console.log(car2['name']);
-        $('#carInfo').html(car2.name + ' / ' + car2.price);
+        document.querySelector('#carInfo').innerHTML = car2.name + ' / ' + car2.price[1];
+        // $('#carInfo').html(car2.name + ' / ' + car2.price[1]);
+        // car2.name[2] 이런식으로 인덱싱가능
     </script>
 </body>
 
