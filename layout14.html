@@ -22,31 +22,67 @@
 
 <body>
     <form class="container my-5 form-group">
+
         <p>상품선택</p>
+
         <select class="form-select mt-2">
             <option>모자</option>
             <option>셔츠</option>
+            <option>바지</option>
         </select>
+
         <select class="form-select mt-2 hide">
             <option>95</option>
             <option>100</option>
         </select>
+
     </form>
+
+    <div id="test">
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
     <script>
 
-        $('.form-select').eq(0).on('input', function () {
-            let value = $('.form-select').eq(0).val();
-            if (value == '셔츠') {
-                $('.form-select').eq(1).removeClass('hide');
-            } else {
-                $('.form-select').eq(1).addClass('hide');
-            }
-        });
+        // $('.form-select').eq(0).on('input', function () {
+        //     let value = $('.form-select').eq(0).val();
+        //     if (value == '셔츠') {
+        //         $('.form-select').eq(1).removeClass('hide');
+        //     } else {
+        //         $('.form-select').eq(1).addClass('hide');
+        //     }
+        // });
         // script태그 내부는 페이지가 최초 로드될 때 순서대로 실행하기 때문에
         // 이벤트리스너의 input이나 change를 사용해야함
+
+        $('.form-select').eq(0).on('input', function () {
+            let value = $('.form-select').eq(0).val();
+            let 바지옵션 = '<option>28</option><option>30</option>';
+            if (value == '셔츠') {
+                $('.form-select').eq(1).removeClass('hide');
+            } else if (value == '바지') {
+                $('.form-select').eq(1).removeClass('hide').html(바지옵션);
+            } else {
+                $('.form-select').eq(1).addClass('hide')
+            }
+        });
+
+        // javascript로 html생성하는 방법
+        // 1번 
+        let a = document.createElement('p'); // p태그 생성
+        a.innerHTML = '안녕'; // 생성된 p태그에 안녕 집어넣기
+        document.querySelector('#test').appendChild(a); // id가 test인거 찾아서 p태그에 안녕 집어넣은거 띄워줘
+        // 2번
+        let 템플릿 = '<p>안녕</p>';
+        document.querySelector('#test').insertAdjacentHTML('beforeend', 템플릿);
+        // insertAdjacentHTML는 기존에 있는 html 요소가 있다면 그 아래에 추가해줌
+        // 다 갈아치우고 싶으면 innerHTML = 템플릿; 사용하면됨
+        $('#test').append(템플릿); // append는 기존에 있는 html 요소에 추가하는 거임
+        // 다 갈아치우고 싶으면 html(템플릿); 사용하면됨
+        // 양이 많아지면 1번이 성능이 더 좋긴함
     </script>
 </body>
 
