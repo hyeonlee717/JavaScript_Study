@@ -48,10 +48,18 @@
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
 
+        // $('.card-body h5').eq(0).html(products[0].title);
+        // $('.card-body p').eq(0).html('가격 : ' + products[0].price);
+        // $('.card-body h5').eq(1).html(products[1].title);
+        // $('.card-body p').eq(1).html('가격 : ' + products[1].price);
+        // $('.card-body h5').eq(2).html(products[2].title);
+        // $('.card-body p').eq(2).html('가격 : ' + products[2].price);
+
         for (let i = 0; i < products.length; i++) {
             $('.card-body h5').eq(i).html(products[i].title);
             $('.card-body p').eq(i).html('가격 : ' + products[i].price);
         }
+
     </script>
 </body>
 
