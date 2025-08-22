@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 과제1
+        let 출석부 = ['흥민', '영희', '철수', '재석'];
+
+        function 이름찾기(name) {
+            // 하나하나 꺼내서 파라미터와 같으면 콘솔창에 '있어요' 출력
+            출석부.forEach(function (a) {
+                if (a == name) {
+                    console.log('있어요');
+                    return;
+                } else {
+                    console.log('');
+                }
+            });
+        }
+
+        // 과제2
+        for (let i = 2; i < 10; i++) {
+            for (let k = 2; k < 10; k++) {
+                console.log(k * i);
+            }
+        }
+
+        // 과제3
+        function 결과(a, score) {
+            // sum 는 a의 합
+            // mean 은 a의 평균
+            // score < mean 이면 '평균보다 mean-score점이 떨어졌네요 재수추천' 출력
+            // score >= mean 이면 '평균보다 score-mean점이 올랐네요' 출력
+            let sum = 0;
+            for (let i = 0; i < a.length; i++) {
+                sum = sum + a[i];
+            }
+            let mean = sum / a.length;
+            if (score < mean) {
+                console.log(`평균보다 ${mean - score}점이 떨어졌네요 재수추천`);
+            } else if (score >= mean) {
+                console.log(`평균보다 ${score - mean}점이 올랐네요`);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
