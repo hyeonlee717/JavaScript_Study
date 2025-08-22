@@ -16,6 +16,7 @@
         <div class="row">
 
         </div>
+        <button class="btn btn-danger" id="more">더보기</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
@@ -26,18 +27,77 @@
             { id: 1, price: 50000, title: 'Springfield Shirt' },
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
+
         // body태그의 주석처리된 카드 레이아웃을 3개 생성하기
-        $(function () {
-            for (let i = 0; i < products.length; i++) {
-                $('.row').eq(0).append(
-                    `<div class="col-sm-4">
-                <img src="https://placehold.co/600" class="w-100">
-                <h5>${products[i].title}</h5>
-                <p>가격 : ${products[i].price}</p>
-            </div>`
-                );
-            }
+        // $(function () {
+        //     for (let i = 0; i < products.length; i++) {
+        //         $('.row').eq(0).append(
+        //             `<div class="col-sm-4">
+        //         <img src="https://placehold.co/600" class="w-100">
+        //         <h5>${products[i].title}</h5>
+        //         <p>가격 : ${products[i].price}</p>
+        //     </div>`
+        //         );
+        //     }
+        // })
+
+        products.forEach(function (a, i) {
+            let 템플릿 =
+                `<div class="col-sm-4">
+                    <img src="https://placehold.co/600" class="w-100">
+                    <h5>${a.title}</h5>
+                    <p>가격 : ${a.price}</p>
+                </div>`;
+            $('.row').append(템플릿);
         })
+        // 콜백함수의 a는 여기서 products[i]와 동일함
+        // a는 각 object가 되는거임 {}, {}, {}가 되어 3개로 forEach 반복
+        let btn_click_count = 0;
+        $('#more').on('click', function () {
+            if (btn_click_count == 0) {
+                $.get('https://codingapple1.github.io/js/more1.json')
+                    .done(function (data) {
+                        // console.log(data)
+                        data.forEach(function (a, i) {
+                            let 템플릿 =
+                                `<div class="col-sm-4">
+                                <img src="https://placehold.co/600" class="w-100">
+                                <h5>${a.title}</h5>
+                                <p>가격 : ${a.price}</p>
+                            </div>`;
+                            $('.row').append(템플릿);
+                        })
+                        btn_click_count = btn_click_count + 1;
+                        console.log(btn_click_count);
+                    })
+                    .fail(function () {
+                        console.log('실패')
+                    })
+            } else if (btn_click_count == 1) {
+                $.get('https://codingapple1.github.io/js/more2.json')
+                    .done(function (data) {
+                        // console.log(data)
+                        data.forEach(function (a, i) {
+                            let 템플릿 =
+                                `<div class="col-sm-4">
+                                <img src="https://placehold.co/600" class="w-100">
+                                <h5>${a.title}</h5>
+                                <p>가격 : ${a.price}</p>
+                            </div>`;
+                            $('.row').append(템플릿);
+                        })
+                        $('#more').hide();
+                        btn_click_count = btn_click_count + 1;
+                        console.log(btn_click_count);
+                    })
+                    .fail(function () {
+                        console.log('실패')
+                    })
+            }
+
+        })
+
+
     </script>
 </body>
 
