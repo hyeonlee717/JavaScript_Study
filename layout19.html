@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script>
+        var products = [
+            { id: 0, price: 70000, title: 'Blossom Dress' },
+            { id: 1, price: 50000, title: 'Springfield Shirt' },
+            { id: 2, price: 60000, title: 'Black Monastery' }
+        ];
+        products.forEach(function (a) {
+            let 템플릿 =
+                `<div class="col-sm-4">
+                    <img src="https://placehold.co/600" class="w-100">
+                    <h5>${a.title}</h5>
+                    <p>가격 : ${a.price}</p>
+                    <button class="cart btn btn-primary">구매</button>
+                </div>`;
+            $('.row').append(템플릿);
+        })
+
+        // // 브라우저 Local storage, Session storage
+        // localStorage.setItem('이름', 'kim'); // 추가
+        // console.log(localStorage.getItem('이름')); // 가져오기, 조회
+        // // localStorage.removeItem('이름'); // 제거
+
+        // // 로컬스토리지 세션스토리지에는 문자만 저장됨
+        // // array, object 형식으로 저장안됨
+        // // but, array 저장하는 편법 : JSON 변환된 문자열로 저장
+        // let arr5 = [1, 2, 3]; // 배열(이대로 넣으면 대괄호 생략됨)
+        // let newArr5 = JSON.stringify(arr5); // 문자열로 변환 후 새 변수에 저장
+        // localStorage.setItem('변환', newArr5) // 새 변수를 로컬스토리지 value에 저장
+        // let newNewArr5 = JSON.parse(newArr5); // 배열로 다시 변환 후 새 변수에 저장
+        // console.log(newNewArr5); // 콘솔창에 출력
+        // console.log(newNewArr5[2]);
+
+        // // local부분을 session으로만 바꾸면 됨
+        // // 로컬스토리지 : 브라우저에 반영구저장
+        // // 세션스토리지 : 브라우저 종료시 삭제
+
+        // 과제1. 추가 버튼 누르면 로컬 스토리지에 array 형태로 저장
+
+        // 페이지 로드 시 localStorage에 'cart'가 있으면 가져와서 파싱하여 arrCart에 배열로 할당합니다.
+        // 없으면 빈 배열로 시작합니다.
+        let arrCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        $('.cart').on('click', function (e) {
+            // 클릭한 버튼의 상품명을 가져옵니다.
+            // $(this)는 사용자가 클릭한 바로 그 '구매' 버튼을 의미합니다.
+            // .siblings('h5')는 클릭한 버튼의 형제 요소 중 <h5>태그를 찾습니다.
+            // .text()는 찾아낸 <h5> 요소 안의 텍스트를 가져옵니다.
+            let title = $(this).siblings('h5').text();
+            // $(e.target)대신 $(this)사용되어 콜백함수 파라미터 e가 사용되지는 않음
+
+            // arrCart 배열에 상품명 추가
+            arrCart.push(title);
+
+            // arrCart 배열을 JSON 문자열 형태로 변환하여 localStorage에 저장합니다.
+            localStorage.setItem('cart', JSON.stringify(arrCart));
+        });
+    </script>
+</body>
+
+</html>

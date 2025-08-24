@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="cart">
+        <h1>장바구니페이지</h1>
+    </div>
+    <script>
+        let strCartData = localStorage.getItem('cart');
+        let arrCartData = JSON.parse(strCartData);
+        console.log(arrCartData);
+        // $('.cart').append(`<p>${arrCartData[0]}</p>`);
+        // $('.cart').append(`<p>${arrCartData[1]}</p>`);
+        // 이걸 array전용 반복문 forEach를 사용하면
+        arrCartData.forEach(function (a) {
+            $('.cart').append(
+                `<p>${a}</p>`
+            );
+        })
+    </script>
+</body>
+
+</html>

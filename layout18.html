@@ -14,6 +14,7 @@
 <body>
     <div class="container">
         <div class="row"></div>
+        <br>
         <button class="btn btn-danger" id="priceSort">가격순정렬</button>
         <button class="btn btn-danger" id="nameSort">이름순정렬</button>
         <button class="btn btn-danger" id="under60000">6만원이하</button>
@@ -33,6 +34,7 @@
                     <img src="https://placehold.co/600" class="w-100">
                     <h5>${a.title}</h5>
                     <p>가격 : ${a.price}</p>
+                    <button>구매</button>
                 </div>`;
             $('.row').append(템플릿);
 
@@ -150,6 +152,27 @@
                 $('.row').append(템플릿);
             })
         })
+
+        // 브라우저 Local storage, Session storage
+        localStorage.setItem('이름', 'kim'); // 추가
+        console.log(localStorage.getItem('이름')); // 가져오기, 조회
+        // localStorage.removeItem('이름'); // 제거
+
+        // 로컬스토리지 세션스토리지에는 문자만 저장됨
+        // array, object 형식으로 저장안됨
+        // but, array 저장하는 편법 : JSON 변환된 문자열로 저장
+        let arr5 = [1, 2, 3]; // 배열(이대로 넣으면 대괄호 생략됨)
+        let newArr5 = JSON.stringify(arr5); // 문자열로 변환 후 새 변수에 저장
+        localStorage.setItem('변환', newArr5) // 새 변수를 로컬스토리지 value에 저장
+        let newNewArr5 = JSON.parse(newArr5); // 배열로 다시 변환 후 새 변수에 저장
+        console.log(newNewArr5); // 콘솔창에 출력
+        console.log(newNewArr5[2]);
+
+        // local부분을 session으로만 바꾸면 됨
+        // 로컬스토리지 : 브라우저에 반영구저장
+        // 세션스토리지 : 브라우저 종료시 삭제
+
+        // 과제1. 추가 버튼 누르면 로컬 스토리지에 배열 형태로 저장
     </script>
 </body>
 
