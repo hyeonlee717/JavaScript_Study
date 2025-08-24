@@ -1,0 +1,18 @@
+.frame-container {
+    width: 200px;
+}
+
+.slide-container {
+    width: 600px;
+    display: flex;
+    transform: translateX(0);
+    transition: transform 0.1s;
+}
+
+.slide-box {
+    width: 200px;
+
+    img {
+        width: 100%;
+    }
+}
