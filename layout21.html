@@ -48,8 +48,30 @@
         })
         $('.slide-box').eq(0).on('mouseup', function (e) {
             clicked = false;
-            if (mouseNowX - mouseStartX < -100) {
+            if (mouseNowX - mouseStartX < -50) {
                 console.log(mouseNowX - mouseStartX);
+                $('.slide-container').css('transform', 'translateX(-200px)')
+            } else {
+                $('.slide-container').css('transform', 'translateX(0)')
+            }
+        })
+        // 모바일에서 터치로도 같은 동작하게 하려면 touchstart, touchmove, touchend 이벤트
+        $('.slide-box').eq(0).on('touchstart', function (e) {
+            clicked = true;
+            // console.log(e.clientX);
+            mouseStartX = e.touches[0].clientX;
+        })
+        $('.slide-box').eq(0).on('touchmove', function (e) {
+            if (clicked == true) {
+                mouseNowX = e.touches[0].clientX; // mousemove 이벤트일때는 e.clientX가 실시간 마우스 x좌표임
+                console.log(mouseNowX - mouseStartX)
+                $('.slide-container').css('transform', `translateX(${mouseNowX - mouseStartX}px)`)
+            }
+        })
+        $('.slide-box').eq(0).on('touchend', function (e) {
+            clicked = false;
+            if (e.changedTouches[0].clientX - mouseStartX < -50) {
+                console.log(e.changedTouches[0].clientX - mouseStartX);
                 $('.slide-container').css('transform', 'translateX(-200px)')
             } else {
                 $('.slide-container').css('transform', 'translateX(0)')
