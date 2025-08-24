@@ -30,7 +30,7 @@
                     <img src="https://placehold.co/600" class="w-100">
                     <h5>${a.title}</h5>
                     <p>가격 : ${a.price}</p>
-                    <button class="cart btn btn-primary">구매</button>
+                    <button class="cart">담기</button>
                 </div>`;
             $('.row').append(템플릿);
         })
@@ -56,24 +56,62 @@
 
         // 과제1. 추가 버튼 누르면 로컬 스토리지에 array 형태로 저장
 
-        // 페이지 로드 시 localStorage에 'cart'가 있으면 가져와서 파싱하여 arrCart에 배열로 할당합니다.
-        // 없으면 빈 배열로 시작합니다.
-        let arrCart = JSON.parse(localStorage.getItem('cart')) || [];
+        // // 페이지 로드 시 localStorage에 'cart'가 있으면 가져와서 파싱하여 arrCart에 배열로 할당합니다.
+        // // 없으면 빈 배열로 시작합니다.
+        // let arrCart = JSON.parse(localStorage.getItem('cart')) || [];
 
+        // $('.cart').on('click', function (e) {
+        //     // 클릭한 버튼의 상품명을 가져옵니다.
+        //     // $(this)는 사용자가 클릭한 바로 그 '구매' 버튼을 의미합니다.
+        //     // .siblings('h5')는 클릭한 버튼의 형제 요소 중 <h5>태그를 찾습니다.
+        //     // .text()는 찾아낸 <h5> 요소 안의 텍스트를 가져옵니다.
+        //     let title = $(this).siblings('h5').text();
+        //     // $(e.target)대신 $(this)사용되어 콜백함수 파라미터 e가 사용되지는 않음
+
+        //     // arrCart 배열에 상품명 추가
+        //     arrCart.push(title);
+
+        //     // arrCart 배열을 JSON 문자열 형태로 변환하여 localStorage에 저장합니다.
+        //     localStorage.setItem('cart', JSON.stringify(arrCart));
+        // });
+
+        // 과제2. 장바구니 페이지 구성하기 -> layout19-cart.html
+
+        // 과제1 다시 해보기 + 중복 방지 or 상품 갯수
         $('.cart').on('click', function (e) {
-            // 클릭한 버튼의 상품명을 가져옵니다.
-            // $(this)는 사용자가 클릭한 바로 그 '구매' 버튼을 의미합니다.
-            // .siblings('h5')는 클릭한 버튼의 형제 요소 중 <h5>태그를 찾습니다.
-            // .text()는 찾아낸 <h5> 요소 안의 텍스트를 가져옵니다.
-            let title = $(this).siblings('h5').text();
-            // $(e.target)대신 $(this)사용되어 콜백함수 파라미터 e가 사용되지는 않음
+            // 로컬스토리지에 cart 없으면
+            // cart 만들어서 value에 지금 누른 버튼 상품 이름 배열 문자 변환 후 등록
+            // 만약 로컬스토리지에 cart가 있으면
+            // cart 꺼내와서 배열로 변환시키고 현재 누른 상품 이름 추가해서 다시 문자열 변환후 등록
 
-            // arrCart 배열에 상품명 추가
-            arrCart.push(title);
-
-            // arrCart 배열을 JSON 문자열 형태로 변환하여 localStorage에 저장합니다.
-            localStorage.setItem('cart', JSON.stringify(arrCart));
-        });
+            let title = $(e.target).siblings('h5').text();
+            let quantity = 1;
+            if (localStorage.getItem('cart') == null) {
+                let arrCart = [{
+                    품명: title,
+                    수량: quantity
+                }];
+                localStorage.setItem('cart', JSON.stringify(arrCart));
+            } else {
+                let newArrCart = JSON.parse(localStorage.getItem('cart'));
+                let found = false;
+                for (let i = 0; i < newArrCart.length; i++) {
+                    if (newArrCart[i].품명 == title) {
+                        found = true;
+                        newArrCart[i].수량 = newArrCart[i].수량 + 1;
+                        localStorage.setItem('cart', JSON.stringify(newArrCart));
+                        break;
+                    }
+                }
+                if (found == false) {
+                    newArrCart.push({
+                        품명: title,
+                        수량: quantity
+                    });
+                    localStorage.setItem('cart', JSON.stringify(newArrCart));
+                }
+            }
+        })
     </script>
 </body>
 
